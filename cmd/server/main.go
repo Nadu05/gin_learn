@@ -14,7 +14,6 @@ func main() {
 	application := app.NewApp()
 
 	r := gin.Default()
-
 	// register routes
 	routes.RegisterUserRoutes(r, application)
 

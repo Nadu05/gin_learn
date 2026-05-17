@@ -1,7 +1,7 @@
 services:
   postgres:
     image: postgres:15
-    container_name: postgres-db
+    container_name: postgres-db-gin
     restart: always
     env_file:
       - .env
@@ -10,11 +10,11 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
     networks:
-      - backend
+      - gin
 
   pgadmin:
     image: dpage/pgadmin4
-    container_name: pgadmin
+    container_name: pgadmin-gin
     restart: always
     env_file:
       - .env
@@ -23,10 +23,19 @@ services:
     depends_on:
       - postgres
     networks:
-      - backend
+      - gin
 
+  redis:
+    image: redis:7
+    container_name: redis-gin
+    restart: always
+    ports:
+      - "6379:6379"
+    networks:
+      - gin
+ 
 volumes:
   pgdata:
 
 networks:
-  backend:
+  gin:
