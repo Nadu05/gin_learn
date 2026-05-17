@@ -1,0 +1,23 @@
+# Binaries
+/bin/
+/dist/
+*.exe
+*.out
+
+# Go build cache
+*.exe~
+*.test
+*.prof
+
+# Dependency folder (if using modules, usually not needed to ignore vendor unless you use it)
+/vendor/
+
+# IDE files
+.idea/
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+.env
