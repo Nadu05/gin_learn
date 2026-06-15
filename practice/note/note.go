@@ -1,8 +1,10 @@
 package note
 
 import (
+	json2 "encoding/json"
 	"errors"
 	"fmt"
+	"os"
 	"time"
 )
 
@@ -27,5 +29,15 @@ func New(title, description string) (*Note, error) {
 func (note Note) DisplayNote() {
 	fmt.Printf("Note title is : %v  and note content is %v \n\n",
 		note.Title, note.Description)
+}
 
+func (note Note) SaveNote() {
+	FileName := "note.txt"
+	json, _ := json2.Marshal(note)
+	err := os.WriteFile(FileName, []byte(json), 0644)
+
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Print("Save note is : ", note.Title)
 }

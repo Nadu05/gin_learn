@@ -11,12 +11,12 @@ import (
 func main() {
 	title, description := getNoteData()
 	userNote, err := note.New(title, description)
-
-	userNote.DisplayNote()
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
+	userNote.DisplayNote()
+	userNote.SaveNote()
 }
 func getNoteData() (string, string) {
 	title := getUserInput("Note title:")
